@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Git Svn Commands</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+  <div class="container">
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav affix">
+          <li><a href="#status"><i class="icon-chevron-right"></i>status</a></li>
+          <li><a href="#checkout"><i class="icon-chevron-right"></i>checkout</a></li>
+          <li><a href="#commit"><i class="icon-chevron-right"></i>commit </a></li>
+          <li><a href="#update"><i class="icon-chevron-right"></i>update</a></li>
+          <li><a href="#revert"><i class="icon-chevron-right"></i>revert</a></li>
+          <li><a href="#log"><i class="icon-chevron-right"></i>log</a></li>
+          <li><a href="#stash"><i class="icon-chevron-right"></i>stash</a></li>
+        </ul>
+
+      </div>
+      <div class="span9">
+        <div id="status" class="row">
+          <div>
+            <h1>Git Status</h1>
+            <p class="text-success"><span class="label label-success">git</span> git status</p>
+            <p><blockquote>Muestra el estado del working copy.  Hay 3 estados:  Staged o listo para commitear.  Unstaged, cambiado pero que no entra en el proximo commit.  y Untracked: No esta siendo trackeado por git.</blockquote></p>
+            <p>
+<pre># On branch master
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
+#
+# new file:   user/uploads/m3svp84nl4hk6oa5ea79m7rm30-CAMPAIGN_BULK.csv
+# new file:   user/uploads/m3svp84nl4hk6oa5ea79m7rm30-CAMPAIGN_BULK.csv.serialized
+#
+# Changes not staged for commit:
+#   (use "git add &lt;file&gt;..." to update what will be committed)
+#   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+#
+# modified:   user/index.php
+#
+# Untracked files:
+#   (use "git add &lt;file&gt;..." to include in what will be committed)
+#
+# ../camps.path
+# ../mh@terranova
+</pre></p>
+          </div>
+        </div>
+        <div id="checkout" class="row" >
+          <div>
+            <h1>Svn Checkout</h1>
+            <p class="text-info"><span class="label label-warn">svn</span> svn checkout svn+ssh://server/subversion/repo</p>
+            <p class="text-success"><span class="label label-success">git</span> git svn clone -r1400:HEAD -s svn+ssh://server/subversion/repo</p>
+            <p><blockquote>Explicacion: Se esta clonando ( analogo a checkout en svn) un repositorio, desde la revision 1400 hasta la ultima ( HEAD ), con un layout estandard (-s, osea trunk, tags, branches) y la url del repositorio base.</blockquote></p>
+          </div>
+        </div>
+        <div id="add" class="row" >
+          <div>
+            <h1>Svn add</h1>
+            <p class="text-info"><span class="label label-warn">svn</span> svn add</p>
+            <p class="text-success"><span class="label label-success">git</span> git add</p>
+            <p><blockquote>Explicacion: Se agregan archivos untracked o unstaged a stage.</blockquote></p>
+          </div>
+        </div>
+        <div id="commit" class="row" >
+           <div>
+            <h1>Svn Commit</h1>
+            <p class="text-info"><span class="label label-warn">svn</span> svn commit -a -m "mensaje"</p>
+            <p class="text-success"><span class="label label-success">git</span> git commit -a -m "mensaje"</p>
+            <p class="text-success"><span class="label label-success">git</span> git svn dcommit</p>
+            <p><blockquote>Explicacion: Se esta generando un commit con los archivos modificados y con un mensaje "mensaje".  Luego se esta "pusheando"  </blockquote></p>
+          </div>
+        </div>
+        <div id="update" class="row" >
+           <div>
+            <h1>Svn Update</h1>
+            <p class="text-info"><span class="label label-warn">svn</span> svn update</p>
+            <p class="text-success"><span class="label label-success">git</span> git svn rebase</p>
+            <p><blockquote>Explicacion: Se actualiza el branch local, con el branch del remoto(svn en este caso) </blockquote></p>
+          </div>
+        </div>
+        <div id="revert" class="row" >
+           <div>
+            <h1>Svn Revert</h1>
+            <p class="text-info"><span class="label label-warn">svn</span> svn revert</p>
+            <p class="text-success"><span class="label label-success">git</span> git checkout -- &lt;file&gt;</p>
+            <p><blockquote>Explicacion: Se "checkoutea" los archivos a su estado sin modificar.  Esto saca a los archivos del estado "unstaged". </blockquote></p>
+          </div>
+        </div>
+        <div id="log" class="row" >
+           <div>
+            <h1>Svn Log</h1>
+            <p class="text-info"><span class="label label-warn">svn</span> svn log</p>
+            <p class="text-success"><span class="label label-success">git</span> git log &lt;file&gt;</p>
+            <p><blockquote>Explicacion: Sin muchas vueltas, retorna un log reverso de commits en le branch actual.  <b>NO</b> es remoto, es local. Mucho mas rapido, los issues que no estan en el remoto, se identifican porque no se ve el git-svn-id. Toma argumento opcional de archivo, que permite ver el history de cambios de ese archivo </blockquote></p>
+          </div>
+        </div>
+        <div id="stash" class="row" >
+           <div>
+            <h1>Stash</h1>
+            <p class="text-success"><span class="label label-success">git</span> git stash &amp;&amp; git stash apply</p>
+            <p><blockquote>Git stash, levanta los cambos unstaged y staged. Los guarda localmente para su posterior uso.  Se vuelven a aplicar con git stash apply.  Sumamente util para switchear lo que uno esta haciendo sin perder cambios o tenes commits desordenados.</blockquote></p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+<script>
+  $('.bs-docs-sidenav').scrollspy();
+  </script>
+</body>
+
+</html>
