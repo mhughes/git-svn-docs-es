@@ -28,6 +28,8 @@
           <li><a href="#revert"><i class="icon-chevron-right"></i>revert</a></li>
           <li><a href="#log"><i class="icon-chevron-right"></i>log</a></li>
           <li><a href="#stash"><i class="icon-chevron-right"></i>stash</a></li>
+          <li><a href="#branches"><i class="icon-chevron-right"></i>branches</a></li>
+          <li><a href="#branches"><i class="icon-chevron-right"></i>merges</a></li>
         </ul>
 
       </div>
@@ -113,6 +115,20 @@
             <h1>Stash</h1>
             <p class="text-success"><span class="label label-success">git</span> git stash &amp;&amp; git stash apply</p>
             <p><blockquote>Git stash, levanta los cambos unstaged y staged. Los guarda localmente para su posterior uso.  Se vuelven a aplicar con git stash apply.  Sumamente util para switchear lo que uno esta haciendo sin perder cambios o tenes commits desordenados.</blockquote></p>
+          </div>
+        </div>
+         <div id="branches" class="row" >
+           <div>
+            <h1>Branches Svn</h1>
+            <p class="text-success"><span class="label label-success">git</span> git svn branch -m "Descripcion del branch" &lt;branchname&gt;</p>
+            <p><blockquote>Genera un branch de svn, basado en el branch actual (trunk/master por favor, siempre)</blockquote></p>
+          </div>
+        </div>
+         <div id="merges" class="row" >
+           <div>
+            <h1>Merges Svn</h1>
+            <p class="text-success"><span class="label label-success">git</span> git merge --squash &lt;branchname&gt;</p>
+            <p><blockquote>Para mergear branches en git, es esencial utilizarlos asi, genera un commit con el resultado del merge.  De otra manera va a generar un fast-forward ( que no queremos ) y modificar el remoto de svn.</blockquote></p>
           </div>
         </div>
       </div>
